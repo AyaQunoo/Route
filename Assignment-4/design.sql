@@ -27,17 +27,13 @@ CREATE TABLE products(
  `description`text,
  `price` decimal(10,2),
  `supplier_id` integer(11) ,
+ `store_id` integer(11),
  PRIMARY KEY (id),
- FOREIGN KEY (supplier_id) REFERENCES suppliers(id) ON DELETE SET NULL
-);
-CREATE TABLE products_stores(
-    `product_id` integer(11) ,
-    `store_id` integer(11),
-    PRIMARY KEY (product_id,store_id),
-    FOREIGN KEY (product_id) REFERENCES products(id) ,
-    FOREIGN KEY (store_id) REFERENCES stores(id) 
+ FOREIGN KEY (supplier_id) REFERENCES suppliers(id) ON DELETE SET NULL,
+ FOREIGN KEY (store_id) REFERENCES stores(id) 
 
 );
+
 
 -- Q2 
 SELECT  DISTINCT(orderNumber) FROM orderdetails WHERE productCode LIKE  "S18%" AND priceEach > 100;
